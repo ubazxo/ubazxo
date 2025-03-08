@@ -1,0 +1,255 @@
+/* =====================================
+   CSS Variables & Global Settings
+===================================== */
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --background-dark: rgba(10, 15, 43, 0.9);
+  --text-color: #ffffff;
+  --transition-speed: 0.3s;
+  --hamburger-size: 25px;
+  --netflix-red: #e50914;
+  --netflix-red-hover: #f40612;
+  --navbar-dark: rgba(0, 0, 0, 0.9);
+  --navbar-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+  --logo-gradient: linear-gradient(120deg, #4f46e5, #06b6d4);
+}
+
+/* =====================================
+   Navbar Base Styles
+===================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 4%;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  background: var(--navbar-gradient);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.scrolled {
+  background-color: var(--navbar-dark);
+}
+
+/* =====================================
+   Logo Styles
+===================================== */
+.logo {
+  height: 52px; /* Increased height */
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  position: relative;
+  transition: transform 0.3s ease;
+  mix-blend-mode: luminosity; /* Add blend mode */
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+  max-width: 180px; /* Increased max-width */
+  object-fit: contain;
+  display: block;
+  filter: brightness(1.1) contrast(0.95); /* Adjust image appearance */
+  opacity: 0.95; /* Slightly reduce opacity */
+  transition: all 0.3s ease;
+}
+
+.logoLink {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  background: transparent; /* Remove background */
+  transition: all 0.3s ease;
+}
+
+.logoLink:hover .logoImage {
+  filter: brightness(1.2) contrast(1); /* Brighten on hover */
+  opacity: 1;
+}
+
+/* Remove or comment out the old text logo styles */
+/* .logo a {
+  font-size: 1.8rem;
+  ...
+} */
+
+/* Add a subtle glow effect on hover */
+.logo a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: var(--logo-gradient);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.logo a:hover::after {
+  opacity: 0.3;
+}
+
+/* =====================================
+   Desktop Navigation Links
+===================================== */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-speed) ease;
+  opacity: 0.8;
+}
+
+.navLink:hover {
+  opacity: 1;
+  color: var(--text-color);
+  transform: none;
+}
+
+.navLink::after {
+  display: none;
+}
+
+/* Active Link Styling */
+.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* =====================================
+   Hamburger Menu (Mobile)
+===================================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+  border-radius: 2px;
+}
+
+/* =====================================
+   Mobile Menu Styling
+===================================== */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--navbar-dark);
+  padding: 1rem 4%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mobileNavLink {
+  font-size: 1rem;
+  color: #ffffff; /* Set font color to white */
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.mobileNavLink::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width var(--transition-speed) ease;
+}
+
+.mobileNavLink:hover::after {
+  width: 100%;
+}
+
+.mobileNavLink:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Ensure visited links maintain text color */
+.mobileNavLink:visited {
+  color: #ffffff; /* Ensure visited links are white */
+}
+
+/* =====================================
+   Responsive Adjustments
+===================================== */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .navbar {
+    height: 60px;
+  }
+  .logo {
+    height: 42px; /* Adjusted mobile height */
+    mix-blend-mode: normal; /* Reset blend mode for mobile */
+  }
+  .logoImage {
+    max-width: 140px; /* Adjusted mobile width */
+    opacity: 1; /* Full opacity for mobile */
+  }
+  .logoLink {
+    padding: 1px;
+  }
+}
+
+/* =====================================
+   Login Button Styling
+===================================== */
+.login-btn {
+  background-color: var(--netflix-red);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.login-btn:hover {
+  background-color: var(--netflix-red-hover);
+  transform: none;
+}

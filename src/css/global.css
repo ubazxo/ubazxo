@@ -1,0 +1,37 @@
+/* global.css */
+
+/* Form Elements */
+input,
+textarea,
+button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Input focus effect */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  transform: scale(1.02);
+}
+
+/* Error State */
+.input-error {
+  border-color: #ff4d4f;
+}
+
+/* Button hover */
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Global form container style (if needed) */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
